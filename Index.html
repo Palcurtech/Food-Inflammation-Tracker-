@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Food Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        label, select, input, button { display: block; margin: 10px 0; width: 100%; padding: 8px; }
+        button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Food Tracker</h1>
+    <label for="meal">Select Meal Time:</label>
+    <select id="meal">
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+    </select>
+
+    <label for="food">Food Eaten:</label>
+    <input type="text" id="food" placeholder="Enter food eaten">
+
+    <label for="inflammation">Inflammation Symptoms:</label>
+    <select id="inflammation">
+        <option value="None">None</option>
+        <option value="Mild">Mild</option>
+        <option value="Severe">Severe</option>
+    </select>
+
+    <button onclick="saveData()">Submit</button>
+
+    <h2>Your Entries:</h2>
+    <ul id="foodLog"></ul>
+
+    <script>
+        function saveData() {
+            const meal = document.getElementById('meal').value;
+            const food = document.getElementById('food').value;
+            const inflammation = document.getElementById('inflammation').value;
+
+            const foodLog = document.getElementById('foodLog');
+            const li = document.createElement('li');
+            li.textContent = `${meal}: ${food} - Inflammation: ${inflammation}`;
+            foodLog.appendChild(li);
+
+            // Clear the input fields after submitting
+            document.getElementById('food').value = '';
+        }
+    </script>
+</body>
+</html>
